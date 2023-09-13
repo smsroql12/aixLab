@@ -1,0 +1,126 @@
+@media only screen and (max-width: 993px) {
+    .topSection {
+        margin-top: 150px;
+    }
+    .align-items-stretch:nth-child(2n) {
+      margin-top: 1.5rem!important;
+  }
+}
+
+.tableDiv {
+    display: block;
+}
+
+.sub-tap-menu {
+    margin-bottom: 20px;
+}
+
+.page-title-heading {
+    letter-spacing: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+
+
+.lParent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /*  not necessary, just to visualize it */
+  .lParent {
+    height: 300px;
+    border: 1px solid black;
+    /*background-color: #0071bd;*/
+    background: url("../images/banner1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .productShowcaseTitle {
+    flex: 0 0 100%; /* Let it fill the entire space horizontally */
+    height: 50px;
+    color: aliceblue;
+    font-size: 1.5rem;
+    line-height: 55px;
+    text-align: center;
+    background-color: #065e99;
+    opacity: 0.9;
+  }
+
+  .litem:hover {
+    background-color: #fafafa;
+    color: #222;
+  }
+
+  .selected {
+    background-color: #fafafa;
+    color: #222;
+  }
+
+  .mcard {
+    background-color: #fff;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 10px;
+    justify-content: space-around;
+    min-width: 100%;
+  }
+
+  .user_img img {
+      width: 150px;  
+      height: 190px;
+      margin-right: 45px;
+  }
+
+  .user_info h1 {
+    font-size: 1.2rem;
+    color: #1e212d;
+    margin: 10px 0;
+  }
+
+  .user_info p {
+    font-size: 0.8rem;
+  }
+
+  .row {
+      font-size: 0.7rem;
+      color: #a1a1a1;
+  }
+
+  .user_info .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+  }
+
+  .user_info .row h1 {
+    font-size: 20px;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .lmenu {
+      display: none;
+    }
+
+      .row {
+          font-size: 0.5rem;
+      }
+      .user_info p {
+          font-size: 0.6rem;
+      }
+
+      .user_img img {
+        width: 170px;  
+        height: 190px;
+        margin-right: 45px;
+      }
+  }

@@ -1,0 +1,127 @@
+@media screen and (max-width: 1200px){ 
+    .greetings {box-sizing:border-box; padding:0  10px 50px;}
+	.greetings_img .text_box {width:50%; padding:20px 30px;}
+	.greetings_img .text_box h3 {font-size:16px; line-height:26px;}
+	.greetings_img .text_box span {font-size:14px;}
+	.greetings_img .text_box span b {font-size:16px;}
+	.greetings_text p strong  {font-size:16px;}
+	.greetings_text p {font-size:12px;}
+}
+
+@media only screen and (max-width: 993px) {
+    .topSection {
+        margin-top: 150px;
+    }
+
+
+    /** 인사말 **/
+	.greetings_img {padding-bottom:0; margin-bottom:40px;}
+	.greetings_img img {min-height:240px;}
+	.greetings_img .text_box {position:relative; bottom:auto; left:auto; max-width:100%; margin-top:0; width:100%; background-size:cover;}
+	.greetings_text p {width:100%; float:none; margin-right:0; margin-bottom:30px;}
+	.greetings_text p:last-child {margin-bottom:0;}
+
+}
+
+@media only screen and (max-width: 767px) {
+    .nbox {
+        margin-top: 220px;
+    }
+
+    .greetingsimgs {
+        display: none;
+    }
+}
+
+.greetings {
+    width: 100%;
+    padding-bottom: 70px;
+}
+
+.greetings_img {
+    width: 100%;
+    text-align: right;
+    position: relative;
+    padding-bottom: 60px;
+    margin-bottom: 70px;
+}
+
+.greetingsimgs {
+    float: right;
+}
+
+.greetings_img .text_box {
+    position: absolute;
+    width: 100%;
+    max-width: 550px;
+    bottom: -10px;
+    left: 0;
+    text-align: left;
+    box-sizing: border-box;
+    padding: 40px 60px;
+    background:url("../images/hoseoaix.PNG") bottom right no-repeat;
+    box-shadow: 3px 4px 10px 3px rgba(0,0,0,0.15);
+}
+
+.greetings_img .text_box h3 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 40px;
+    margin-bottom: 20px;
+    text-shadow: -1px 0px #222, 0px 1px #222, 1px 0px #222, 0px -1px #222;
+}
+
+.greetings_img .text_box span {
+    display: block;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: #fff;
+}
+
+.greetings_img .text_box span b {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.greetings_text {
+    width: 100%;
+}
+
+.greetings_text:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.greetings_text p {
+    width: 47.5%;
+    float: left;
+    margin-right: 5%;
+    font-size: 16px;
+    line-height: 24px;
+    color: #666;
+    font-weight: 200;
+    letter-spacing: -1px;
+}
+
+.greetings_text p:last-child {
+    margin-right: 0;
+}
+
+.greetings_text p strong {
+    font-size: 26px;
+    color: #222;
+    line-height: 34px;
+    font-weight: 200;
+    display: block;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.greetings_text p strong b {
+    display: block;
+    font-weight: 600;
+}

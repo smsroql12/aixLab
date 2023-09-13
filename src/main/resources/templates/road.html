@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>호서대학교 AI+X 연구센터 - 찾아오시는 길</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/core.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap5_3_1.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/lib/fontawesome/css/all.min.css}"/>
+      <style>
+         html, body {
+            font-family: "Pretendard-Regular";
+         }
+      </style>
+   </head>
+
+   <body>
+   <!-- 지도 API -->
+      <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=038d5a3b80496a004837d98e9a7b5662"></script>
+      <!-- Section: Header -->
+      <header class="header">
+         <div class="container">
+            <section class="wrapper">
+               <h2><a href="index" class="brand"><img src="./assets/images/호서대로고_로고.png" style="width: 270px; margin-right: 10px; float: left;"/></a></h2>
+               <button type="button" class="opened-menu">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+               </button>
+               <div class="overlay"></div>
+               <nav class="navbar">
+                  <button type="button" class="closed-menu">
+                     <img src="./assets/images/closed.svg" class="closed-icon" alt="closed">
+                  </button>
+                  <ul class="menu">
+                     <li class="menu-item menu-item-has-children">
+                        <a href="./info" data-toggle="sub-menu">연구센터 소개 <i class="expand"></i></a>
+                        <ul class="sub-menu">
+                           <li class="menu-item"><a href="./info">연구센터 소개</a></li>
+                           <li class="menu-item"><a href="./director">센터장 인사말</a></li>
+                           <li class="menu-item"><a href="./vision">비전 및 전략</a></li>
+                           <li class="menu-item"><a href="./road">찾아오시는 길</a></li>
+                        </ul>
+                     </li>
+                     <li class="menu-item"><a href="./professor">참여 교수</a></li>
+                     <li class="menu-item"><a href="./mainbusiness">주요 사업</a></li>
+                     <li class="menu-item menu-item-has-children">
+                        <a href="./notice" data-toggle="sub-menu">게시판 <i class="expand"></i></a>
+                        <ul class="sub-menu">
+                           <li class="menu-item"><a href="./notice">공지사항</a></li>
+                           <li class="menu-item"><a href="./resource">자료실</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </nav>
+            </section>
+         </div>
+      </header>
+
+      <!-- Section: Main -->
+      <main class="main">
+         <div class="container">
+            <div class="row mb-4 topSection" style="z-index: 0;">
+               <div class="lParent mb-4 lmenu">
+                  <div></div>
+                  <div>
+                     <div class="row text-center mb-1 productShowcaseTitle">
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('1')">
+                           연구센터 소개
+                        </div>
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('2')">
+                              센터장 인사말
+                        </div>
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('3')">
+                              비전 및 전략
+                        </div>
+                        <div class="col-sm litem selected" role="button" onclick="redirectUrl('4')">
+                              찾아오시는 길
+                        </div>
+                     </div>
+                  </div>
+                </div>
+
+                <div class="tableDiv">
+                  <nav class="sub-tap-menu">
+                        <h2 class="page-title-heading text-center">찾아오시는 길</h2>
+                  </nav>
+                  <div class="col-xl-12 mb-5">
+                     <!--<img src="./assets/images/testMap.PNG">-->
+                     <div id="map" style="width:100%;height:350px;"></div>
+                     <div id="clickLatlng"></div>
+                    <div class="card">
+                     <div class="row no-gutters" style="margin-left: 0">
+                         <div class="col-auto" style="background-color: #0071bd;">
+                             <div class="img-fluid mt-2" alt="" style="padding: 15px 15px; display: flex; align-items: center; color: azure;">
+                              호서대학교 AI+X 센터<br/>오시는 길
+                           </div>
+                         </div>
+                         <div class="col">
+                             <div class="card-block px-2 mt-4">
+                              <div class="row">
+                                 <div class="col-sm">
+                                    <span style="float: left;" class="mr-2"><img src="./assets/images/icon/maps-and-flags.png" width="20" height="20"/></span><span style="float: left;"><b class="mr-4">ADD</b>(31499) 충청남도 아산시 배방읍 호서로 79번길 20 제 2 공학관</span>
+                                 </div>
+                               </div>
+                               <div class="row">
+                                 <div class="col-sm">
+                                    <span style="float: left;" class="mr-2"><img src="./assets/images/icon/phone-call.png" width="20" height="20"/></span><span style="float: left;"><b class="mr-5">TEL</b><a href='tel:041-540-5695' style="text-decoration: none; color:black">041-540-5695</a>, <a href='tel:041-540-5584' style="text-decoration: none; color:black">5584</a></span>
+                                 </div>
+                                 
+                                 <div class="col-sm">
+                                    <span style="float: left;" class="mr-2"><img src="./assets/images/icon/email.png" width="20" height="20"/></span><span style="float: left;"><b class="mr-5">EMAIL</b><a href="mailto:computer@hoseo.edu" style="text-decoration: none; color:black">computer@hoseo.edu</a></span>
+                                 </div>
+                               </div>
+                             </div>
+                         </div>
+                     </div>
+                     </div>
+                  </div>
+
+                  <ul class="loc-info2">
+                     <li>
+                         <strong class="tit"><img src="./assets/images/icon/car.png" width="20" height="20" style="float: left;" class="mr-2">자가용 이용 안내</strong>
+                         <span class="txt" style="clear: both;">
+                           천안TG(경부고속도로) - 천안IC에서 좌회전 - 천안로 사거리에서 좌회전(천안대로) - 수원시도로원점 - 구성삼거리- 삼용사거리 - 청삼교차로에서 오른쪽진입(남부대로) - 남부대교-용합교 - 신방삼거리 - 매곡삼거리(21번국도)- 봉강교- 봉강삼거리 - 호서대학교
+                         </span>
+                     </li>
+                     <li class="mt-4">
+                         <strong class="tit"><img src="./assets/images/icon/bus.png" width="20" height="20" style="float: left;" class="mr-2">스쿨버스 이용 안내 </strong>
+                         <span class="txt" style="clear: both;">
+                              <em>1</em><a href="./assets/images/천안아산역.jpg" target="_blank"><b>수도권 지하철 1호선 천안아산역 1층 정문 시내버스정류장 앞</b></a><br/>
+                              <a href="./assets/images/쌍용3동.jpg" target="_blank"><b></b>쌍용 3동 (비어스토리 앞)</b></a><br/>
+                              <a href="./assets/images/충무병원.jpg" target="_blank"><b>충무병원 (버들약국 앞)</b></a><br/>
+                              <em>1</em><a href="./assets/images/천안역.jpg" target="_blank"><b>수도권 지하철 1호선 천안역 IBK기업은행 천안지점 앞 정류장</b></a><br/>
+                              <a href="./assets/images/천안터미널.jpg" target="_blank"><b></b>천안터미널 (삼부르네상스 건너편)</b></a>
+                         </span>
+                     </li>
+                 </ul>
+
+                  </div>
+               </div>
+
+            <footer class="row py-3 mt-3 border-top">
+               <div class="col-md-12">
+                 <div class="mb-3"><a href="https://www.hoseo.ac.kr/Home/Main.mbz" target="_blank" style="display:inline-block"><img src="./assets/images/호서대로고_블랙.jpg" width="200"/></a></div>
+                 <a href="http://www.hoseo.ac.kr/Home/Contents.mbz?action=MAPP_1708310223" target="_blank">개인정보처리방침</a><br/>
+                 <label class="mt-3">아산캠퍼스 : 충청남도 아산시 배방읍 호서로79번길 20 (우)31499 TEL:<a href='tel:041-540-5114'>041-540-5114</a></label><br/>
+                 <label>천안캠퍼스 : 충청남도 천안시 동남구 호서대길 12 (우)31066 TEL:<a href='tel:041-560-8114'>041-560-8114</a></label>
+                 <p class="text-muted">COPYRIGHT(C)2023 HOSEO UNIVERSITY ALL RIGHTS RESERVED.</p>
+               </div>
+             </footer>
+            </div>
+      </main>
+      
+      <script>
+         var mapContainer = document.getElementById('map'),
+             mapOption = { 
+                 center: new kakao.maps.LatLng(36.736774852315286, 127.07325546413695),
+                 level: 4 // 지도의 확대 레벨
+             };
+         
+         var map = new kakao.maps.Map(mapContainer, mapOption);
+         
+         var marker = new kakao.maps.Marker({ 
+             position: map.getCenter() 
+         }); 
+         
+         marker.setMap(map);
+
+         //resize event
+         window.addEventListener('resize', function(){
+            var markerPosition = marker.getPosition(); 
+            map.relayout();
+            map.setCenter(markerPosition);
+         });
+
+         
+      </script>
+
+   <link rel="stylesheet" th:href="@{/assets/css/road.css}"/>
+   <script th:src="@{/assets/js/lib/jquery-3.6.0.js}"></script>
+   <script th:src="@{/assets/js/lib/core-init.js}"></script>
+   <script th:src="@{/assets/js/lib/bootstrap5_3_1.min.js}"></script>
+   <script th:src="@{/assets/css/lib/fontawesome/js/all.min.js}"></script>
+   <script th:src="@{/assets/js/script.js}"></script>
+      
+</body>
+</html>

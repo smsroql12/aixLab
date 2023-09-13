@@ -1,0 +1,120 @@
+@media only screen and (max-width: 993px) {
+    .topSection {
+        margin-top: 150px;
+    }
+    .align-items-stretch:nth-child(2n) {
+      margin-top: 1.5rem!important;
+  }
+}
+
+.tableDiv {
+    display: block;
+}
+
+.sub-tap-menu {
+    margin-bottom: 20px;
+}
+
+.page-title-heading {
+    letter-spacing: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+}
+
+
+
+.lParent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /*  not necessary, just to visualize it */
+  .lParent {
+    height: 300px;
+    border: 1px solid black;
+    /*background-color: #0071bd;*/
+    background: url("../images/banner1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .productShowcaseTitle {
+    flex: 0 0 100%; /* Let it fill the entire space horizontally */
+    height: 50px;
+    color: aliceblue;
+    font-size: 1.5rem;
+    line-height: 55px;
+    text-align: center;
+    background-color: #065e99;
+    opacity: 0.9;
+  }
+
+  .litem:hover {
+    background-color: #fafafa;
+    color: #222;
+  }
+
+  .selected {
+    background-color: #fafafa;
+    color: #222;
+  }
+
+  .ArticleContentBox {
+        padding: 29px 29px 29px;
+        border: 1px solid #d3d3d3;
+        border-radius: 6px;
+    }
+
+    .ArticleContentBox .article_header {
+        position: relative;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #d3d3d3;
+    }
+
+    .ArticleTitle {
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+
+    .ArticleTitle .title_area .title_text {
+        font-weight: 400;
+        font-size: 26px;
+        word-break: break-all;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .WriterInfo .article_info {
+        font-size: 12px;
+        line-height: 13px;
+        color: #222;
+    }
+    .WriterInfo .article_info .date {
+        margin-right: 8px;
+    }
+
+    .btn_list {
+        margin-top: 20px;
+        float: right;
+        text-align: right;
+    }
+
+    .button-black {
+        border: 0px;
+        border-radius: 5px;
+        background-color: rgb(46, 46, 46);
+        color: white;
+        font: 15px 굴림;
+        font-weight: bold;
+        width: 90px;
+        height: 35px;
+    }
+
+  @media only screen and (max-width: 768px) {
+    .lmenu {
+      display: none;
+    }
+  }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>호서대학교 AI+X 연구센터 - 센터장 인사말</title>
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/core.min.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap5_3_1.min.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+    <style>
+        html, body {
+            font-family: "Pretendard-Regular";
+        }
+    </style>
+</head>
+
+<body>
+<!-- Section: Header -->
+<header class="header">
+    <div class="container">
+        <section class="wrapper">
+            <h2><a href="index" class="brand"><img src="./assets/images/호서대로고_로고.png" style="width: 270px; margin-right: 10px; float: left;"/></a></h2>
+            <button type="button" class="opened-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="overlay"></div>
+            <nav class="navbar">
+                <button type="button" class="closed-menu">
+                    <img src="./assets/images/closed.svg" class="closed-icon" alt="closed">
+                </button>
+                <ul class="menu">
+                    <li class="menu-item menu-item-has-children">
+                        <a href="./info" data-toggle="sub-menu">연구센터 소개 <i class="expand"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="./info">연구센터 소개</a></li>
+                            <li class="menu-item"><a href="./director">센터장 인사말</a></li>
+                            <li class="menu-item"><a href="./vision">비전 및 전략</a></li>
+                            <li class="menu-item"><a href="./road">찾아오시는 길</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item"><a href="./professor">참여 교수</a></li>
+                    <li class="menu-item"><a href="./mainbusiness">주요 사업</a></li>
+                    <li class="menu-item menu-item-has-children">
+                        <a href="./notice" data-toggle="sub-menu">게시판 <i class="expand"></i></a>
+                        <ul class="sub-menu">
+                            <li class="menu-item"><a href="./notice">공지사항</a></li>
+                            <li class="menu-item"><a href="./resource">자료실</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+</header>
+
+<!-- Section: Main -->
+<main class="main">
+    <div class="container">
+        <div class="row mb-4 topSection" style="z-index: 0;">
+            <div class="lParent mb-4 lmenu">
+                <div></div>
+                <div>
+                    <div class="row text-center mb-1 productShowcaseTitle">
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('1')">
+                            연구센터 소개
+                        </div>
+                        <div class="col-sm litem selected" role="button" onclick="redirectUrl('2')">
+                            센터장 인사말
+                        </div>
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('3')">
+                            비전 및 전략
+                        </div>
+                        <div class="col-sm litem" role="button" onclick="redirectUrl('4')">
+                            찾아오시는 길
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tableDiv">
+                <nav class="sub-tap-menu">
+                    <h2 class="page-title-heading text-center">센터장 인사말</h2>
+                </nav>
+                <div class="col-lg-8 mt-4">
+                    <h3 class="after-line left" style="font-weight:400">안녕하세요. AI+X 연구센터를 찾아주신 여러분, 환영합니다.</h3>
+                </div>
+                <div class="col-lg-8" style="word-break: break-all;">
+                    <p>AI기술의 발전은 우리는 이전에 상상조차 할 수 없었던 놀라운 세계에 발을 내딛게 되었습니다.
+                        이러한 시기에 AI+X 연구센터는 다양한 Background를 가진 여러 교수님들과 협력하여 AI의 확장
+                        된 가능성을 탐색하고, 연구와 기술개발을 통해 사회와 산업에 긍정적인 영향을 미치기를 바라고
+                        있습니다.
+                    </p>
+                    <br/>
+                    <p>
+                        특히, AI 기술은 이제 더 이상 일부 산업에만 국한되지 않고, 제조, 금융, 건강 관리, 교육 등 다양한
+                        분야에서 혁신적인 변화를 이끌어내고 있습니다. 이에, AI+X 연구센터는 광범위한 분야에서 AI기
+                        술의 혁신을 이끌고, 사회적 가치와 현실적 문제를 해결해 나가고자 합니다.
+                    </p>
+                    <br/>
+                    <p>
+                        감사합니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="row py-3 mt-3 border-top">
+            <div class="col-md-12">
+                <div class="mb-3"><a href="https://www.hoseo.ac.kr/Home/Main.mbz" target="_blank" style="display:inline-block"><img src="./assets/images/호서대로고_블랙.jpg" width="200"/></a></div>
+                <a href="http://www.hoseo.ac.kr/Home/Contents.mbz?action=MAPP_1708310223" target="_blank">개인정보처리방침</a><br/>
+                <label class="mt-3">아산캠퍼스 : 충청남도 아산시 배방읍 호서로79번길 20 (우)31499 TEL:<a href='tel:041-540-5114'>041-540-5114</a></label><br/>
+                <label>천안캠퍼스 : 충청남도 천안시 동남구 호서대길 12 (우)31066 TEL:<a href='tel:041-560-8114'>041-560-8114</a></label>
+                <p class="text-muted">COPYRIGHT(C)2023 HOSEO UNIVERSITY ALL RIGHTS RESERVED.</p>
+            </div>
+        </footer>
+    </div>
+</main>
+
+<link rel="stylesheet" th:href="@{/assets/css/director.css}"/>
+<script th:src="@{/assets/js/lib/jquery-3.6.0.js}"></script>
+<script th:src="@{/assets/js/lib/core-init.js}"></script>
+<script th:src="@{/assets/js/lib/bootstrap5_3_1.min.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+<script th:src="@{/assets/js/script.js}"></script>
+
+</body>
+</html>
