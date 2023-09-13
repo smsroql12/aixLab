@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="150x150" th:href="@{../../assets/images/favicon/favicon_icon-150x150.png}">
     <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap.min.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
     <title>자료실 수정/삭제</title>
@@ -36,6 +37,10 @@
         .pagination > li {
           margin-left: 0.25rem;
           margin-right: 0.25rem;
+        }
+
+        .nowPage {
+          font-weight: 800;
         }
 
         /* sidebar for small screens */
@@ -196,7 +201,7 @@
             </li>
 
             <li th:each="page: ${#numbers.sequence(start, end)}">
-              <a th:text="${page}" th:href="@{/aDFvMXMxZTFv/resource/md(page=${page})}"></a>
+              <a th:class="|p${page}|" th:text="${page}" th:href="@{/aDFvMXMxZTFv/resource/md(page=${page})}"></a>
             </li>
 
             <li th:if="${end < eList.totalPages}">
@@ -286,6 +291,15 @@
         $(".pagination > li > a").each(function() {
           $(this).attr("href", $(this).attr("href") + "&searchKeyword=" + searchKeyword + "&type=" + searchType);
         });
+      }
+
+      if(window.location.href.indexOf("page") > -1) {
+        const urlParams = new URL(location.href).searchParams;
+        let page = urlParams.get('page');
+        $(".p" + page).addClass('nowPage');
+      }
+      else {  //page 1
+        $(".p1").addClass('nowPage');
       }
   });
 </script>

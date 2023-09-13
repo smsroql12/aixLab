@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="150x150" th:href="@{../assets/images/favicon/favicon_icon-150x150.png}">
   <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap.min.css}"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
   <title>관리자 페이지</title>
@@ -185,64 +186,6 @@
     });
 
   });
-
-  (function() {
-    var content =
-            "<p><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzC_Ho_08G0m7PyxJOPLpPujM9UTLxvaE-5nXewscnqa3GMWjGwg' alt='Image result for summernote.js'></p><h1>Summernote</h1>";
-    var $sumNote = $("#ta-1")
-            .summernote({
-              callbacks: {
-                onPaste: function(e,x,d) {
-                  $sumNote.code(($($sumNote.code()).find("font").remove()));
-                }
-              },
-
-              dialogsInBody: true,
-              dialogsFade: true,
-              disableDragAndDrop: true,
-              //                disableResizeEditor:true,
-              height: "180px",
-              tableClassName: function() {
-                //alert("tbl");
-                $(this)
-                        .addClass("table table-bordered")
-
-                        .attr("cellpadding", 0)
-                        .attr("cellspacing", 0)
-                        .attr("border", 1)
-                        .css("borderCollapse", "collapse")
-                        .css("table-layout", "fixed")
-                        .css("width", "100%");
-
-                $(this)
-                        .find("td")
-                        .css("borderColor", "#ccc")
-                        .css("padding", "4px");
-              }
-            })
-            .data("summernote");
-
-    //get
-    $("#btn-get-content").on("click", function() {
-      var y =$($sumNote.code());
-
-      console.log(y[0]);console.log(y.find("p> font"));
-      var x = y.find("font").remove();
-      $("#content").text($("#ta-1").val());
-    });
-    //get text$($sumNote.code()).find("font").remove()$($sumNote.code()).find("font").remove()
-    $("#btn-get-text").on("click", function() {
-      $("#content").html($($sumNote.code()).text());
-    });
-    //set
-    $("#btn-set-content").on("click", function() {
-      $sumNote.code(content);
-    }); //reset
-    $("#btn-reset").on("click", function() {
-      $sumNote.reset();
-      $("#content").empty();
-    });
-  })();
 </script>
 </body>
 </html>

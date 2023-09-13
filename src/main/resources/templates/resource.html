@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>호서대학교 AI+X 연구센터 - 자료실</title>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>호서대학교 AI+X 연구센터 - 자료실</title>
+    <link rel="icon" type="image/png" sizes="150x150" th:href="@{./assets/images/favicon/favicon_icon-150x150.png}">
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/lib/core.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap5_3_1.min.css}"/>
@@ -109,7 +112,7 @@
                             </li>
 
                             <li th:each="page: ${#numbers.sequence(start, end)}">
-                                <span class="nowPage"><a th:text="${page}" th:href="@{/resource(page=${page})}"></a></span>
+                                <span><a th:class="|p${page}|" th:text="${page}" th:href="@{/resource(page=${page})}"></a></span>
                             </li>
 
                             <li th:if="${end < eList.totalPages}">
@@ -187,6 +190,15 @@
                   $(".pagination > li > span > a").each(function() {
                       $(this).attr("href", $(this).attr("href") + "&searchKeyword=" + searchKeyword + "&type=" + searchType);
                   });
+              }
+
+              if(window.location.href.indexOf("page") > -1) {
+                  const urlParams = new URL(location.href).searchParams;
+                  let page = urlParams.get('page');
+                  $(".p" + page).addClass('nowPage');
+              }
+              else {  //page 1
+                  $(".p1").addClass('nowPage');
               }
           });
       </script>
