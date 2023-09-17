@@ -78,7 +78,7 @@
                                  <option value="s_contitle">제목+내용</option>
                                  <option value="author">작성자</option>
                              </select>
-                             <button type="submit" class="btn btn-light">검색</button>
+                             <button type="submit" class="btn btn-light btn-sm">검색</button>
                          </form>
                      </div>
 
@@ -95,7 +95,7 @@
                             <tr th:each="e: ${eList}">
                                 <td th:text="${e.id}"></td>
                                 <td><a th:href="@{/view?id={id}&bType={bType}(id = ${e.id}, bType = ${'resource'})}" th:text="${e.title}"></a></td>
-                                <td th:text="${e.author}"></td>
+                                <td th:text="관리자"></td>
                                 <td th:text="${e.regdate}"></td>
                             </tr>
                         </tbody>

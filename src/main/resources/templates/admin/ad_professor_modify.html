@@ -55,9 +55,14 @@
     <script th:src="@{/assets/js/lib/bootstrap.min.js}"></script>
     <script>
       function copy_to_clipboard() {
-        window.navigator.clipboard.writeText("<a href='https://www.naver.com' target='_blank'>네이버</a>").then(() => {
-          alert("복사가 완료되었습니다. 소개란에 붙여넣기 하여 사용해주세요.");
-        });
+          let content = document.getElementById('textArea').innerText;
+
+          navigator.clipboard.writeText(content).then(() => {
+              alert("복사가 완료되었습니다. 소개란에 붙여넣기 하여 사용해주세요.");
+            })
+            .catch(err => {
+              alert("복사에 실패하였습니다. 사유 : " + err);
+            })
       }
     </script>
     <!-- overlay -->
@@ -209,6 +214,7 @@
       </div>
     </div>
     </form>
+    <textarea id="textArea" style="display: none"><a href="https://www.naver.com" target="_blank">네이버</a></textarea>
   </main>
 </div>
 
