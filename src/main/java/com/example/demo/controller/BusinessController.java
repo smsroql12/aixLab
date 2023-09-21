@@ -114,8 +114,17 @@ public class BusinessController {
         if(isAuthenticated()) {
             //기존에있던 글이 담겨져 나온다.
             Business businessTemp = businessService.businessView(id);
+            String tmpSrc = "";
+            Pattern pattern = Pattern.compile("<img src=\"([^\"]+)");
+            Matcher matcher = pattern.matcher(business.getOrigcontent());
+            do  {
+                if((matcher.find())) {
+                    tmpSrc = matcher.group(1);
+                }
+            } while(false);
 
             //기존에있던 내용을 새로운 내용으로 덮어씌운다.
+            businessTemp.setThumbnail(tmpSrc);
             businessTemp.setTitle(business.getTitle());
             businessTemp.setOrigcontent(business.getOrigcontent());
             businessTemp.setContent(Jsoup.clean(business.getOrigcontent(), Whitelist.none()));
@@ -167,7 +176,6 @@ public class BusinessController {
         if(isAuthenticated()) {
             if (searchKeyword == null || searchKeyword == "") {
                 Page<Business> eList = businessService.getAllBusiness(pageable);
-                model.addAttribute("username", userDetails.getUsername());
                 model.addAttribute("eList", eList);
                 model.addAttribute("maxPage", 10);
             }
@@ -175,25 +183,21 @@ public class BusinessController {
                 switch (type) {
                     case "s_title":
                         Page<Business> list = businessService.businessSearchList(searchKeyword, pageable); //검색리스트반환
-                        model.addAttribute("username", userDetails.getUsername());
                         model.addAttribute("eList" , list);
                         model.addAttribute("maxPage", 10);
                         break;
                     case "s_content" :
                         Page<Business> list2 = businessService.businessSearchListByContent(searchKeyword, pageable); //검색리스트반환
-                        model.addAttribute("username", userDetails.getUsername());
                         model.addAttribute("eList" , list2);
                         model.addAttribute("maxPage", 10);
                         break;
                     case "s_contitle" :
                         Page<Business> list3 = businessService.businessSearchListByTitleAndContent(searchKeyword, pageable); //검색리스트반환
-                        model.addAttribute("username", userDetails.getUsername());
                         model.addAttribute("eList" , list3);
                         model.addAttribute("maxPage", 10);
                         break;
                     case "author" :
                         Page<Business> list4 = businessService.businessSearchListByAuthor(searchKeyword, pageable); //검색리스트반환
-                        model.addAttribute("username", userDetails.getUsername());
                         model.addAttribute("eList" , list4);
                         model.addAttribute("maxPage", 10);
                         break;

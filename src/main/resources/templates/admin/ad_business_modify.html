@@ -23,7 +23,6 @@
           border-left: 2px solid var(--primary) !important;
         }
 
-
         .sidebar{
           top: 0;
           left : 0;
@@ -86,7 +85,7 @@
     <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gbusiness" data-toggle="collapse" data-target="#business-collapse">
       <div>
         <span class="bi bi-pencil-square"></span>
-        <span class="ml-2">주요사업</span>
+        <span class="ml-2">주요성과</span>
       </div>
       <span class="bi bi-chevron-down small"></span>
     </button>
@@ -170,7 +169,7 @@
     <form th:action="@{/aDFvMXMxZTFv/business/update/{id}(id=${testboard.id})}" method="post" onsubmit="befSubmit();">
       <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
         <div class="container">
-          <h2 class="display-5 mb-2 text-primary">주요사업 글 수정</h2>
+          <h2 class="display-5 mb-2 text-primary">주요성과 글 수정</h2>
           <input type="text" class="form-control" id="title" name="title" th:value="${testboard.title}"><br/>
           <textarea id="ta-1" cols="30" rows="30"></textarea>
           <textarea class="form-control" id="ta-2" name="origcontent" cols="30" rows="30" style="display: none"></textarea>
@@ -240,6 +239,31 @@
                         .find("td")
                         .css("borderColor", "#ccc")
                         .css("padding", "4px");
+              },
+              callbacks: {
+                onPaste: function (e) {
+                  if (document.queryCommandSupported("insertText")) {
+                    let text = $(e.currentTarget).html();
+                    let bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+
+                    setTimeout(function () {
+                      document.execCommand('insertText', false, bufferText);
+                    }, 10);
+                    e.preventDefault();
+                  } else { //IE
+                    let text = window.clipboardData.getData("text")
+                    if (trap) {
+                      trap = false;
+                    } else {
+                      trap = true;
+                      setTimeout(function () {
+                        document.execCommand('paste', false, text);
+                      }, 10);
+                      e.preventDefault();
+                    }
+                  }
+
+                }
               }
             })
             .data("summernote");

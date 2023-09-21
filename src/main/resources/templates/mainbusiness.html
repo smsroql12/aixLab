@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>호서대학교 AI+X 연구센터 - 주요 사업</title>
+    <title>호서대학교 AI+X 연구센터 - 주요 성과</title>
     <link rel="icon" type="image/png" sizes="150x150" th:href="@{./assets/images/favicon/favicon_icon-150x150.png}">
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
     <link rel="stylesheet" th:href="@{/assets/css/lib/core.min.css}"/>
@@ -48,7 +48,7 @@
                         </ul>
                      </li>
                      <li class="menu-item"><a href="./professor">참여 교수</a></li>
-                     <li class="menu-item"><a href="./mainbusiness">주요 사업</a></li>
+                     <li class="menu-item"><a href="./mainbusiness">주요 성과</a></li>
                      <li class="menu-item menu-item-has-children">
                         <a href="./notice" data-toggle="sub-menu">게시판 <i class="expand"></i></a>
                         <ul class="sub-menu">
@@ -66,7 +66,7 @@
       <main class="main">
          <div class="container">
             <div class="row mb-4" style="z-index: 0; margin-bottom: 50px;">
-               <h2 class="t_title">주요사업</h2>
+               <h2 class="t_title">주요성과</h2>
                      <div class="aside">
                          ▷ 총 <span th:text="${count}"></span>개의 게시물이 있습니다.
                      </div>
@@ -224,6 +224,25 @@
            }
            else {  //page 1
                $(".p1").addClass('nowPage');
+           }
+
+           $(".help-box-text-m").each(function() {
+               $(this).text(decodeHTMLEntities($(this).text()));
+           });
+
+           function decodeHTMLEntities (str) {
+               if(str !== undefined && str !== null && str !== '') {
+                   str = String(str);
+
+                   str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+                   str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+                   let element = document.createElement('div');
+                   element.innerHTML = str;
+                   str = element.textContent;
+                   element.textContent = '';
+               }
+
+               return str;
            }
        });
    </script>
