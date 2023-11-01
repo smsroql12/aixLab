@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Upload Multiple Files to MySQL</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+
+<body>
+<script>
+
+    const downloadAs = (url, name) => {
+        axios.get(url, {
+            headers: {
+                "Content-Type": "application/octet-stream"
+            },
+            responseType: "blob"
+        })
+            .then(response => {
+                const a = document.createElement("a");
+                const url = window.URL.createObjectURL(response.data);
+                a.href = url;
+                a.download = name;
+                a.click();
+            })
+            .catch(err => {
+                console.log("error", err);
+            });
+    };
+</script>
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-md-7 table-responsive">
+            <h2>Uploaded Files</h2>
+            <table class="table" id="customerTable">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Filename</th>
+                    <th>FakeFilename</th>
+                    <th>Download</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="file, rowStat: ${files}">
+                    <td th:text="${rowStat.count}">1</td>
+                    <td th:text="${file.filename}">File-Name</td>
+                    <td th:text="${file.fakefilename}">Fake_File-Name</td>
+                    <td><a href='javascript:void(0);' th:attr="onclick=|downloadAs('${file.url}', '${file.filename}')|">Link</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <button onclick="downloadAs('http://localhost:8083/files/TOOUPZWM_3337_ZJCO_2796_KBBQPRDX.hwp', '안녕.hwp');">test</button>
+            <div>
+                <a class="btn btn-light btn-block" href="/" role="button">Back to Upload Form</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
