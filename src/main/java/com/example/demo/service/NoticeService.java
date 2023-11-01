@@ -18,8 +18,9 @@ public class NoticeService {
     @Autowired
     private NoticeRepository noticeRepository;
 
-    public void write(Notice notice){
+    public Integer write(Notice notice){
         noticeRepository.save(notice);
+        return notice.getId();
     }
 
     //게시글이 있는지 확인

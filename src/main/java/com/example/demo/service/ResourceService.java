@@ -16,8 +16,9 @@ public class ResourceService {
     @Autowired
     private ResourceRepository resourceRepository;
 
-    public void write(Resource resource){
+    public Integer write(Resource resource){
         resourceRepository.save(resource);
+        return resource.getId();
     }
 
     //게시글이 있는지 확인

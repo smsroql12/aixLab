@@ -17,8 +17,9 @@ public class BusinessService {
     @Autowired
     private BusinessRepository businessRepository;
 
-    public void write(Business business){
+    public Integer write(Business business){
         businessRepository.save(business);
+        return business.getId();
     }
 
     //게시글이 있는지 확인

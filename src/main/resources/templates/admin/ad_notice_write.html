@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="150x150" th:href="@{../../assets/images/favicon/favicon_icon-150x150.png}">
     <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/assets/css/lib/summernote-bs4.css}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/writestyle.css}"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
     <title>공지사항 작성</title>
     <style>
@@ -167,13 +168,18 @@
       </script>
   <!-- main content -->
   <main class="p-4 min-vh-100">
-    <form action="/aDFvMXMxZTFv/notice/writepro" method="post" onsubmit="befSubmit();">
+    <form action="/aDFvMXMxZTFv/notice/writepro" method="post" enctype="multipart/form-data" onsubmit="befSubmit();">
     <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
       <div class="container">
         <h2 class="display-5 mb-2 text-primary">공지사항 글쓰기</h2>
           <input type="text" class="form-control" id="title" placeholder="제목" name="title" maxlength="180"><br/>
           <textarea id="ta-1" cols="30" rows="30"></textarea>
           <textarea class="form-control" id="ta-2" name="origcontent" cols="30" rows="30" style="display: none"></textarea>
+
+        <div class="filearea mt-4"></div>
+
+        <button type="button" class="btn btn-info float-right mt-3" onclick="addfiles();">파일추가</button>
+        <div style="clear: both"></div>
       </div>
       
     </div>
@@ -185,6 +191,7 @@
     </form>
   </main>
 </div>
+<script th:src="@{/assets/js/writescript.js}"></script>
 <script>
     $(document).ready(()=>{
         $('#open-sidebar').click(()=>{

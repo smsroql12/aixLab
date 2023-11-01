@@ -4,6 +4,8 @@ import com.example.demo.entity.Business;
 import com.example.demo.entity.Notice;
 import com.example.demo.entity.Professor;
 import com.example.demo.entity.Resource;
+import com.example.demo.file.FileModel;
+import com.example.demo.file.FileRepository;
 import com.example.demo.service.BusinessService;
 import com.example.demo.service.NoticeService;
 import com.example.demo.service.ProfessorService;
@@ -37,6 +39,9 @@ public class MainController {
 
     @Autowired
     private ProfessorService professorService;
+
+    @Autowired
+    private FileRepository fileRepository;
 
     @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
@@ -75,6 +80,10 @@ public class MainController {
         switch (bType) {
             case "notice":
                 if (noticeService.existsPost(id)) {
+                    List<FileModel> fileInfos = fileRepository.findByBno("1-" + id);
+
+                    model.addAttribute("files", fileInfos);
+                    model.addAttribute("fileCounts", fileInfos.size());
                     model.addAttribute("testboard", noticeService.noticeView(id));
                     rtn = "view_notice";
 
@@ -86,6 +95,10 @@ public class MainController {
                 break;
             case "resource" :
                 if (resourceService.existsPost(id)) {
+                    List<FileModel> fileInfos = fileRepository.findByBno("2-" + id);
+
+                    model.addAttribute("files", fileInfos);
+                    model.addAttribute("fileCounts", fileInfos.size());
                     model.addAttribute("testboard", resourceService.resourceView(id));
                     rtn = "view_resource";
 
@@ -97,6 +110,10 @@ public class MainController {
                 break;
             case "business":
                 if (businessService.existsPost(id)) {
+                    List<FileModel> fileInfos = fileRepository.findByBno("3-" + id);
+
+                    model.addAttribute("files", fileInfos);
+                    model.addAttribute("fileCounts", fileInfos.size());
                     model.addAttribute("testboard", businessService.businessView(id));
                     rtn = "view_business";
 

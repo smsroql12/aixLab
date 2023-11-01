@@ -127,6 +127,13 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
       <script th:src="@{/assets/js/script.js}"></script>
 
+      <script>
+          let el = document.getElementsByClassName("qt")[1];
+          el.onclick = hello;
 
+          function hello()  {
+              alert('20220985 김이삭');
+          }
+      </script>
    </body>
 </html>
