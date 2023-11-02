@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="150x150" th:href="@{../../assets/images/favicon/favicon_icon-150x150.png}">
+    <link rel="stylesheet" th:href="@{/assets/css/lib/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
+    <title>배너 추가</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+        body{
+            font-family: 'Barlow', sans-serif;
+        }
+
+        a:hover{
+            text-decoration: none;
+        }
+
+        .border-left{
+            border-left: 2px solid var(--primary) !important;
+        }
+
+
+        .sidebar{
+            top: 0;
+            left : 0;
+            z-index : 100;
+            overflow-y: auto;
+        }
+
+        .overlay{
+            background-color: rgb(0 0 0 / 45%);
+            z-index: 99;
+        }
+
+        /* sidebar for small screens */
+        @media screen and (max-width: 767px){
+
+            .sidebar{
+                max-width: 18rem;
+                transform : translateX(-100%);
+                transition : transform 0.4s ease-out;
+            }
+
+            .sidebar.active{
+                transform : translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<script th:src="@{/assets/js/lib/jquery-3.6.0.js}"></script>
+<script th:src="@{/assets/js/lib/popper.min.js}"></script>
+<script th:src="@{/assets/js/lib/bootstrap.min.js}"></script>
+<!-- overlay -->
+<div id="sidebar-overlay" class="overlay w-100 vh-100 position-fixed d-none"></div>
+<!-- sidebar -->
+<div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" id="sidebar">
+    <h1 class="bi bi-gear text-primary d-flex my-4 justify-content-center"></h1>
+    <div class="list-group rounded-0">
+        <a href="../home" class="list-group-item list-group-item-action border-0 d-flex align-items-center ghome">
+            <span class="bi bi-border-all"></span>
+            <span class="ml-2">홈</span>
+        </a>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gnotice" data-toggle="collapse" data-target="#notice-collapse">
+            <div>
+                <span class="bi bi-pencil-square"></span>
+                <span class="ml-2">공지사항</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="notice-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="../notice/write" class="list-group-item list-group-item-action border-0 pl-5">작성</a>
+                <a href="../notice/md" class="list-group-item list-group-item-action border-0 pl-5">수정 / 삭제</a>
+            </div>
+        </div>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gbusiness" data-toggle="collapse" data-target="#business-collapse">
+            <div>
+                <span class="bi bi-pencil-square"></span>
+                <span class="ml-2">주요성과</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="business-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="../business/write" class="list-group-item list-group-item-action border-0 pl-5">작성</a>
+                <a href="../business/md" class="list-group-item list-group-item-action border-0 pl-5">수정 / 삭제</a>
+            </div>
+        </div>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gresource" data-toggle="collapse" data-target="#resource-collapse">
+            <div>
+                <span class="bi bi-pencil-square"></span>
+                <span class="ml-2">자료실</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="resource-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="../resource/write" class="list-group-item list-group-item-action border-0 pl-5">작성</a>
+                <a href="../resource/md" class="list-group-item list-group-item-action border-0 pl-5">수정 / 삭제</a>
+            </div>
+        </div>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gbanner" data-toggle="collapse" data-target="#banner-collapse">
+            <div>
+                <span class="bi bi-card-image"></span>
+                <span class="ml-2">배너 관리</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="banner-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="./write" class="list-group-item list-group-item-action active border-0 pl-5">삽입</a>
+                <a href="./md" class="list-group-item list-group-item-action border-0 pl-5">수정 / 삭제</a>
+            </div>
+        </div>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gprofessor" data-toggle="collapse" data-target="#sale-collapse">
+            <div>
+                <span class="bi bi-person-circle"></span>
+                <span class="ml-2">교수 관리</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="sale-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="../professor/write" class="list-group-item list-group-item-action border-0 pl-5">삽입</a>
+                <a href="../professor/md" class="list-group-item list-group-item-action active border-0 pl-5">수정 / 삭제</a>
+            </div>
+        </div>
+
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gaccount" data-toggle="collapse" data-target="#purchase-collapse">
+            <div>
+                <span class="bi bi-person-circle"></span>
+                <span class="ml-2">계정 관리</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="purchase-collapse" data-parent="#sidebar">
+            <div class="list-group">
+                <a href="../account/signup" class="list-group-item list-group-item-action border-0 pl-5">계정 생성</a>
+                <a href="../account/withdrawal" class="list-group-item list-group-item-action border-0 pl-5">계정 삭제</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-9 col-lg-10 ml-md-auto px-0 ms-md-auto">
+    <!-- top nav -->
+    <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
+        <!-- close sidebar -->
+        <button class="btn py-0 d-lg-none" id="open-sidebar">
+            <span class="bi bi-list text-primary h3"></span>
+        </button>
+        <div class="dropdown ml-auto">
+            <div class="row align-items-center mr-3" style="float: left" th:text="'로그인 계정 : ' + ${username}"></div>
+            <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-toggle="dropdown" aria-expanded="false">
+                <span class="bi bi-person text-primary h4"></span>
+                <span class="bi bi-chevron-down ml-1 mb-2 small"></span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="logout-dropdown">
+                <a class="dropdown-item" href="../logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main content -->
+    <main class="p-4 min-vh-100">
+        <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
+            <div class="container">
+                <h2 class="display-5 mb-2 text-primary">배너 추가</h2>
+                <form action="/aDFvMXMxZTFv/banner/writepro" method="post">
+                    <div class="form-group">
+                        <label for="title">제목</label>
+                        <input type="text" class="form-control" id="title" placeholder="제목" name="title" maxlength="20">
+                    </div>
+                    <div class="form-group">
+                        <label for="link">링크 (http 또는 https 로 시작하는 링크 주소만 삽입, 배너 클릭시 링크 바로가기가 아닌 이미지만 출력되기 원하면 해당 란은 공백으로)</label>
+                        <textarea class="form-control" id="link" rows="1" name="link" maxlength="4000"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="picture">배너 사진 첨부 (2MB 미만의 파일만 첨부 가능합니다.&nbsp;&nbsp;&nbsp;3.5 x 1 또는 3 x 1 비율 권장)</label>
+                        <input class="form-control" type="file" id="formFile" accept="image/jpeg, image/gif, image/png" required>
+                        <textarea class="form-control" id="picture" rows="5" name="picture" style="display: none"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-primary">작성</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        </form>
+    </main>
+</div>
+
+<script>
+    $(document).ready(()=>{
+        $('#open-sidebar').click(()=>{
+            // add class active on #sidebar
+            $('#sidebar').addClass('active');
+            // show sidebar overlay
+            $('#sidebar-overlay').removeClass('d-none');
+        });
+
+
+        $('#sidebar-overlay').click(function(){
+            // add class active on #sidebar
+            $('#sidebar').removeClass('active');
+            // show sidebar overlay
+            $(this).addClass('d-none');
+        });
+
+        $(".gbanner").click();
+
+
+        $("#formFile").change(function(e){
+            var mb = 1024 * 1024; //1mb(메가)
+            var limit_size = mb * 2;
+            size = $("#formFile")[0].files[0].size;
+
+            if(limit_size < size){
+                alert('5mb 사이즈 미만의 이미지만 \n업로드가 가능합니다.');
+                $("#formFile").val("");
+                return;
+            }
+            convertBase64();
+        });
+
+        function convertBase64() {
+            var file = $("#formFile")[0].files[0];
+            console.log(file);
+            var reader = new FileReader();
+            reader.readAsBinaryString(file);
+
+            reader.onload = function() {
+                $("#picture").val("data:image/jpg;base64," + btoa(reader.result));
+            };
+            reader.onerror = function() {
+                alert('이미지 변환 오류!');
+                return;
+            };
+        }
+
+    });
+</script>
+</body>
+</html>
