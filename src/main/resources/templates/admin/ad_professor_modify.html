@@ -106,6 +106,20 @@
           </div>
         </div>
 
+        <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gbanner" data-toggle="collapse" data-target="#banner-collapse">
+          <div>
+            <span class="bi bi-card-image"></span>
+            <span class="ml-2">배너 관리</span>
+          </div>
+          <span class="bi bi-chevron-down small"></span>
+        </button>
+        <div class="collapse" id="banner-collapse" data-parent="#sidebar">
+          <div class="list-group">
+            <a href="../../banner/write" class="list-group-item list-group-item-action border-0 pl-5">삽입</a>
+            <a href="../../banner/md" class="list-group-item list-group-item-action border-0 pl-5">수정 / 삭제</a>
+          </div>
+        </div>
+
         <button class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center gprofessor" data-toggle="collapse" data-target="#sale-collapse">
           <div>
             <span class="bi bi-person-circle"></span>
@@ -156,9 +170,6 @@
       </nav>
 
       <script>
-        function befSubmit() {
-          $("#ta-2").text($("#ta-1").val());
-        }
         function deleteProfessor(id) {
           if(confirm("해당 교수를 삭제하시겠습니까?"))
             location.href = '/aDFvMXMxZTFv/professor/delete?id=' + id;
@@ -169,7 +180,7 @@
 
   <!-- main content -->
   <main class="p-4 min-vh-100">
-    <form th:action="@{/aDFvMXMxZTFv/professor/update/{id}(id=${testboard.id})}" method="post" onsubmit="befSubmit();">
+    <form th:action="@{/aDFvMXMxZTFv/professor/update/{id}(id=${testboard.id})}" method="post" >
     <div class="jumbotron jumbotron-fluid rounded bg-white border-0 shadow-sm border-left px-4">
       <div class="container">
         <h2 class="display-5 mb-2 text-primary">교수 수정</h2>
@@ -187,7 +198,7 @@
             <textarea class="form-control" id="career" rows="5" name="career" maxlength="500" th:text="${testboard.career}"></textarea>
           </div>
           <div class="form-group">
-            <label for="picture">사진 첨부 (2MB 미만의 파일만 첨부 가능합니다.&nbsp;&nbsp;&nbsp;2.5 x 3 비율 권장)</label>
+            <label for="picture">프로필 사진 첨부 (2MB 미만의 파일만 첨부 가능합니다.&nbsp;&nbsp;&nbsp;2.5 x 3 비율 권장)</label>
             <input class="form-control" type="file" id="formFile" accept="image/jpeg, image/gif, image/png">
             <textarea class="form-control" id="picture" rows="5" name="picture" th:text="${testboard.picture}" style="display: none"></textarea>
           </div>

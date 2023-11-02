@@ -103,7 +103,7 @@
 
                     <div th:if="${fileCounts > 0}" class="fileList">
                         <fieldset class="border p-2">
-                            <legend class="w-auto display-4">첨부파일</legend>
+                            <legend class="w-auto fs-6">첨부파일</legend>
                             <div th:each="file : ${files}" class="shadow-none p-2 rounded">
                                 <div style="padding: 0 10px;"><a href='javascript:void(0);' th:text="${file.name}" th:attr="onclick=|downloadAs('http://localhost:8083/files/${file.fakename}', '${file.name}')|"></a></div>
                             </div>

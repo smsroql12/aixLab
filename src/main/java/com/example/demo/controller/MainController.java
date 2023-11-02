@@ -1,15 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.Business;
-import com.example.demo.entity.Notice;
-import com.example.demo.entity.Professor;
-import com.example.demo.entity.Resource;
+import com.example.demo.entity.*;
 import com.example.demo.file.FileModel;
 import com.example.demo.file.FileRepository;
-import com.example.demo.service.BusinessService;
-import com.example.demo.service.NoticeService;
-import com.example.demo.service.ProfessorService;
-import com.example.demo.service.ResourceService;
+import com.example.demo.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,6 +35,9 @@ public class MainController {
     private ProfessorService professorService;
 
     @Autowired
+    private BannerService bannerService;
+
+    @Autowired
     private FileRepository fileRepository;
 
     @GetMapping(value = {"/", "/index"})
@@ -50,6 +47,12 @@ public class MainController {
 
         List<Business> eList2 = businessService.mainPage();
         model.addAttribute("eList2", eList2);
+
+        List<Banner> eList3 = bannerService.getAllBanner(1);
+        double count = (double) bannerService.getCount();
+
+        model.addAttribute("count", count);
+        model.addAttribute("eList3", eList3);
 
         return "index";
     }
@@ -266,11 +269,11 @@ public class MainController {
     public String professor(Model model) {
         List<Professor> eList = professorService.getAllProfessor(1);
         double count = (double) professorService.getCount() / 2;
-        long t = Math.round(count);
+        long r = Math.round(count);
 
         model.addAttribute("eList", eList);
         model.addAttribute("count", professorService.getCount());
-        model.addAttribute("test", t);
+        model.addAttribute("rNum", r);
 
         return "professor";
     }

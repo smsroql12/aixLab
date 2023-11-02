@@ -121,7 +121,7 @@ public class ProfessorController {
     }
 
     @PostMapping("/professor/update/{id}")
-    public String noticeUpdate(@PathVariable("id") Integer id, Professor professor, Model model){
+    public String professorUpdate(@PathVariable("id") Integer id, Professor professor, Model model){
         if(isAuthenticated()) {
             //기존에있던 내용이 담겨져 나온다.
             Professor professorTemp = professorService.professorView(id);

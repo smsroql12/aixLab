@@ -127,6 +127,7 @@ function redirectUrl(num) {
    }
 }
 
+//다른 이름으로 파일 저장
 const downloadAs = (url, name) => {
     axios.get(url, {
         headers: {

@@ -17,7 +17,11 @@
       </style>
    </head>
    <body>
-
+    <script>
+        window.onload = function(){
+            //document.getElementsByClassName("carousel-page")[0].setAttribute("active", "active");
+        }
+    </script>
       <!-- Section: Header -->
       <header class="header">
          <div class="container">
@@ -70,31 +74,11 @@
                            </button>
                        </div>
                        <div class="carousel-stage">
-                           <div class="carousel-page" active="active">
+                           <div class="carousel-page" th:each="e3, cnt: ${eList3}" th:attr="active=${cnt.index == 0 ? 'active' : ''}">
                                <div class="carousel-content">
                                    <div class="h3 carousel-title">
-                                       <img src="./assets/images/banner1.jpg"/>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="carousel-page">
-                               <div class="carousel-content">
-                                   <div class="h3 carousel-title">
-                                       <img src="./assets/images/banner2.jpg"/>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="carousel-page">
-                               <div class="carousel-content">
-                                   <div class="h3 carousel-title">
-                                       <img src="./assets/images/banner3.jpg"/>
-                                   </div>
-                               </div>
-                           </div>
-                           <div class="carousel-page">
-                               <div class="carousel-content">
-                                   <div class="h3 carousel-title">
-                                       <img src="./assets/images/banner4.jpg"/>
+                                       <a th:if="${not #strings.isEmpty(e3.link)}" th:href="${e3.link}" th:target="_blank"><img th:src="${e3.picture}"/></a>
+                                       <a th:unless="${not #strings.isEmpty(e3.link)}" href="#"><img th:src="${e3.picture}"/></a>
                                    </div>
                                </div>
                            </div>
@@ -106,10 +90,7 @@
                        <div class="carousel-step">
                            <div class="br-step" data-initial="1" data-type="simple">
                                <div class="step-progress">
-                                   <button class="step-progress-btn" type="button"><span class="step-info">1</span></button>
-                                   <button class="step-progress-btn" type="button"><span class="step-info">2</span></button>
-                                   <button class="step-progress-btn" type="button"><span class="step-info">3</span></button>
-                                   <button class="step-progress-btn" type="button"><span class="step-info">4</span></button>
+                                   <button class="step-progress-btn" type="button" th:each="num : ${#numbers.sequence(1, count)}"><span class="step-info" th:text="${num}"></span></button>
                                </div>
                            </div>
                        </div>
