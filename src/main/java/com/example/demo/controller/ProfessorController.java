@@ -34,7 +34,7 @@ public class ProfessorController {
         return authentication.isAuthenticated();
     }
 
-    //글 작성 페이지
+    //교수 등록 페이지
     @GetMapping("/professor/write")
     public String professorWriteForm(Model model) {
         if(isAuthenticated()) {
@@ -49,7 +49,7 @@ public class ProfessorController {
         }
     }
 
-    //글 등록
+    //교수 등록
     @PostMapping("/professor/writepro")
     public String professorWritePro(Professor professor, Model model){
         if(isAuthenticated()) {
@@ -62,7 +62,7 @@ public class ProfessorController {
             }
             professorService.write(professor);
 
-            model.addAttribute("message", "글작성이 완료되었습니다");
+            model.addAttribute("message", "교수 등록이 완료되었습니다");
             model.addAttribute("searchUrl", "/aDFvMXMxZTFv/professor/md");
         }
         else {
@@ -74,7 +74,7 @@ public class ProfessorController {
     }
 
 
-    //글 수정 페이지
+    //교수 수정 페이지
     @GetMapping("/professor/modify/{id}")
     public String professorModify(@PathVariable("id") Integer id, Model model){
         if(isAuthenticated()) {
@@ -165,7 +165,7 @@ public class ProfessorController {
         return  "message";
     }
 
-    //게시판 목록
+    //교수 목록
     @GetMapping("/professor/md")
     public String viewProfessorList(Model model) {
         if(isAuthenticated()) {

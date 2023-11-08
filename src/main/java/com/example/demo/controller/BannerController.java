@@ -33,7 +33,7 @@ public class BannerController {
         return authentication.isAuthenticated();
     }
 
-    //글 작성 페이지
+    //배너 등록 페이지
     @GetMapping("/banner/write")
     public String bannerWriteForm(Model model) {
         if(isAuthenticated()) {
@@ -48,7 +48,7 @@ public class BannerController {
         }
     }
 
-    //글 등록
+    //배너 등록
     @PostMapping("/banner/writepro")
     public String bannerWritePro(Banner banner, Model model){
         if(isAuthenticated()) {
@@ -63,7 +63,7 @@ public class BannerController {
             banner.setAuthor(userDetails.getUsername());
             bannerService.write(banner);
 
-            model.addAttribute("message", "글작성이 완료되었습니다");
+            model.addAttribute("message", "배너 등록이 완료되었습니다");
             model.addAttribute("searchUrl", "/aDFvMXMxZTFv/banner/md");
         }
         else {
@@ -75,7 +75,7 @@ public class BannerController {
     }
 
 
-    //글 수정 페이지
+    //배너 수정 페이지
     @GetMapping("/banner/modify/{id}")
     public String bannerModify(@PathVariable("id") Integer id, Model model){
         if(isAuthenticated()) {
@@ -98,7 +98,7 @@ public class BannerController {
         }
     }
 
-    //교수 시퀀스 순서 수정
+    //배너 시퀀스 순서 수정
     @PostMapping("/banner/updateseq")
     public String bannerSeqUpdate(Model model, String itemdict){
         if(isAuthenticated()) {
@@ -146,7 +146,7 @@ public class BannerController {
         return "message";
     }
 
-    //교수 삭제
+    //배너 삭제
     @GetMapping("/banner/delete")
     public String bannerDelete(Integer id, Model model){
         if(isAuthenticated()) {
@@ -167,7 +167,7 @@ public class BannerController {
         return  "message";
     }
 
-    //게시판 목록
+    //배너 목록
     @GetMapping("/banner/md")
     public String viewBannerList(Model model) {
         if(isAuthenticated()) {

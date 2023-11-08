@@ -121,28 +121,31 @@
                      </div>
                      </div>
                   </div>
-
-                  <ul class="loc-info2">
-                     <li>
-                         <strong class="tit"><img src="./assets/images/icon/car.png" width="20" height="20" style="float: left;" class="mr-2">자가용 이용 안내</strong>
-                         <span class="txt" style="clear: both;">
-                           천안TG(경부고속도로) - 천안IC에서 좌회전 - 천안로 사거리에서 좌회전(천안대로) - 수원시도로원점 - 구성삼거리- 삼용사거리 - 청삼교차로에서 오른쪽진입(남부대로) - 남부대교-용합교 - 신방삼거리 - 매곡삼거리(21번국도)- 봉강교- 봉강삼거리 - 호서대학교
-                         </span>
-                     </li>
-                     <li class="mt-4">
-                         <strong class="tit"><img src="./assets/images/icon/bus.png" width="20" height="20" style="float: left;" class="mr-2">스쿨버스 이용 안내 </strong>
-                         <span class="txt" style="clear: both;">
-                              <em>1</em><a href="./assets/images/천안아산역.jpg" target="_blank"><b>수도권 지하철 1호선 천안아산역 1층 정문 시내버스정류장 앞</b></a><br/>
-                              <a href="./assets/images/쌍용3동.jpg" target="_blank"><b></b>쌍용 3동 (비어스토리 앞)</b></a><br/>
-                              <a href="./assets/images/충무병원.jpg" target="_blank"><b>충무병원 (버들약국 앞)</b></a><br/>
-                              <em>1</em><a href="./assets/images/천안역.jpg" target="_blank"><b>수도권 지하철 1호선 천안역 IBK기업은행 천안지점 앞 정류장</b></a><br/>
-                              <a href="./assets/images/천안터미널.jpg" target="_blank"><b></b>천안터미널 (삼부르네상스 건너편)</b></a>
-                         </span>
-                     </li>
-                 </ul>
-
+                      <ul class="loc-info2">
+                         <li>
+                             <strong class="tit"><img src="./assets/images/icon/car.png" width="20" height="20" style="float: left;" class="mr-2">자가용 이용 안내</strong>
+                             <span class="txt" style="clear: both;">
+                               천안TG(경부고속도로) - 천안IC에서 좌회전 - 천안로 사거리에서 좌회전(천안대로) - 수원시도로원점 - 구성삼거리- 삼용사거리 - 청삼교차로에서 오른쪽진입(남부대로) - 남부대교-용합교 - 신방삼거리 - 매곡삼거리(21번국도)- 봉강교- 봉강삼거리 - 호서대학교
+                             </span>
+                         </li>
+                         <li class="mt-4">
+                             <strong class="tit"><img src="./assets/images/icon/bus.png" width="20" height="20" style="float: left;" class="mr-2">스쿨버스 이용 안내 </strong>
+                             <span class="txt" style="clear: both;">
+                                  <em>1</em><a href="#a" src="./assets/images/천안아산역.jpg"><b>수도권 지하철 1호선 천안아산역 1층 정문 시내버스정류장 앞</b></a><br/>
+                                  <a href="#a" src="./assets/images/쌍용3동.jpg"><b></b>쌍용 3동 (비어스토리 앞)</b></a><br/>
+                                  <a href="#a" src="./assets/images/충무병원.jpg"><b>충무병원 (버들약국 앞)</b></a><br/>
+                                  <em>1</em><a href="#a" src="./assets/images/천안역.jpg"><b>수도권 지하철 1호선 천안역 IBK기업은행 천안지점 앞 정류장</b></a><br/>
+                                  <a href="#a" src="./assets/images/천안터미널.jpg"><b></b>천안터미널 (삼부르네상스 건너편)</b></a>
+                             </span>
+                         </li>
+                     </ul>
                   </div>
                </div>
+
+             <div id="image-viewer">
+                 <span class="close">&times;</span>
+                 <img class="modal-content" id="full-image">
+             </div>
 
             <footer class="row py-3 mt-3 border-top">
                <div class="col-md-12">
@@ -177,8 +180,6 @@
             map.relayout();
             map.setCenter(markerPosition);
          });
-
-         
       </script>
 
    <link rel="stylesheet" th:href="@{/assets/css/road.css}"/>
@@ -187,6 +188,16 @@
    <script th:src="@{/assets/js/lib/bootstrap5_3_1.min.js}"></script>
    <script th:src="@{/assets/css/lib/fontawesome/js/all.min.js}"></script>
    <script th:src="@{/assets/js/script.js}"></script>
-      
+   <script>
+       $(".txt a").click(function(){
+           $("#full-image").attr("src", $(this).attr("src"));
+           $('#image-viewer').show();
+       });
+
+       $("#image-viewer .close").click(function(e){
+           $('#image-viewer').hide();
+           e.preventDefault();
+       });
+   </script>
 </body>
 </html>

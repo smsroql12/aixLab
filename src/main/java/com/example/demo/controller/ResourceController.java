@@ -253,7 +253,7 @@ public class ResourceController {
         return "message";
     }
 
-    //글삭제
+    //글 삭제
     @GetMapping("/resource/delete")
     public String resourceDelete(Integer id, Model model){
         if(isAuthenticated()) {

@@ -54,9 +54,10 @@
     height: 300px;
     border: 1px solid black;
     /*background-color: #0071bd;*/
-    background: url("../images/banner1.jpg");
+    background: url("../images/banner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
   }
   
   .productShowcaseTitle {

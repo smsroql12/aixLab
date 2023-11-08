@@ -277,7 +277,7 @@ public class BusinessController {
         return "message";
     }
 
-    //글삭제
+    //글 삭제
     @GetMapping("/business/delete")
     public String businessDelete(Integer id, Model model){
         if(isAuthenticated()) {

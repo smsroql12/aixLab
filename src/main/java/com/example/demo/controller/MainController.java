@@ -40,6 +40,11 @@ public class MainController {
     @Autowired
     private FileRepository fileRepository;
 
+    //운영 서버 URL
+    private String url = "https://aix.hoseo.ac.kr/files/";
+    //개발 로컬서버 URL
+    private String testurl = "http://localhost:8083/files/";
+
     @GetMapping(value = {"/", "/index"})
     public String index(Model model) {
         List<Notice> eList = noticeService.mainPage();
@@ -87,6 +92,7 @@ public class MainController {
 
                     model.addAttribute("files", fileInfos);
                     model.addAttribute("fileCounts", fileInfos.size());
+                    model.addAttribute("thisUrl", url);
                     model.addAttribute("testboard", noticeService.noticeView(id));
                     rtn = "view_notice";
 
@@ -102,6 +108,7 @@ public class MainController {
 
                     model.addAttribute("files", fileInfos);
                     model.addAttribute("fileCounts", fileInfos.size());
+                    model.addAttribute("thisUrl", url);
                     model.addAttribute("testboard", resourceService.resourceView(id));
                     rtn = "view_resource";
 
@@ -117,6 +124,7 @@ public class MainController {
 
                     model.addAttribute("files", fileInfos);
                     model.addAttribute("fileCounts", fileInfos.size());
+                    model.addAttribute("thisUrl", url);
                     model.addAttribute("testboard", businessService.businessView(id));
                     rtn = "view_business";
 
